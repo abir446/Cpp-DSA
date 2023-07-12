@@ -2,33 +2,20 @@
 
 #include<bits/stdc++.h>
 using namespace std;
-//Brute Force Approach
+//Kadane's Algorithm
 int largestSubArraySum(int arr[],int n){
     
-    int prefix[n]={0};
-    prefix[0]=arr[0];
-    //building prefix sum array
-    for(int i=1;i<n;i++){
-        prefix[i]=prefix[i-1]+arr[i];
+    int cs=0;
+    int largest=0;
+    for (int i=0;i<n;i++)
+    {
+        cs+=arr[i];
+        if (cs<0)
+            cs=0;
+            
+        largest=max(largest,cs);
     }
- 
-    //variable for storing answer 
-    int largestSum=0;
- 
-    for(int i=0;i<n;i++){
-        
-        for(int j=i;j<n;j++){
-            int subArraySum=0;
-            if(i==0){
-                subArraySum=prefix[j];
-            }
-            else{
-                subArraySum=prefix[j]-prefix[i-1];
-            }
-            largestSum=max(largestSum,subArraySum);
-        }
-    }
-    return largestSum;
+    return largest;
 }
 //find the largest sum of  the sub std::array
 
