@@ -17,7 +17,7 @@ int main()
             max=arr[i];
     }
 
-    vector<int>hash(max,0);
+    vector<int>hash(max+1,0);
     for (int i=0;i<10;i++)
     {
         hash[arr[i]]++;
